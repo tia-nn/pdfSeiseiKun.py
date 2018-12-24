@@ -33,7 +33,7 @@ class MyCanvas(canvas.Canvas):
             self.drawString(
                 x,
                 # 真ん中ーフォントサイズの半分下げて真ん中にする＋ライン分上げるー行分下げる
-                height / 2 - font_size / 2 + len(draw_lines) * font_size / 2 - font_size * line_num + current_y,
+                self.height / 2 - font_size / 2 + len(draw_lines) * font_size / 2 - font_size * line_num + current_y,
                 draw_line
             )
 
@@ -92,20 +92,14 @@ class MyCanvas(canvas.Canvas):
 j = json.loads(open('./config.json').read())
 FONT_PATH = j['font_path']
 FILENAME = j['output_name']
-
-height, width = A4
-
+INPUT_FILE_NAME = j['input_path']
 
 c = MyCanvas(filename=FILENAME, pagesize=landscape(A4), font_name='UDDigital', font_path=FONT_PATH)
 c.setTitle(os.path.basename(FILENAME))
 
-test_string = '''\
-hjogehogea
-ehfoa
-hifhwa
-'''
+string = open(INPUT_FILE_NAME).read()
 
-c.parse_text(test_string)
+c.parse_text(string)
 
 c.save()
 webbrowser.open(url='file:'+os.path.abspath(FILENAME))

@@ -1,4 +1,5 @@
 {
   "font_path": "/home/tia/.fonts/UDDigiKyokashoNB-B.ttc",
-  "output_name": "./out.pdf"
+  "output_name": "./out.pdf",
+  "input_path": "./input.md"
 }
